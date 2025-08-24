@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Catalog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .controls {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .add-show-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .add-btn, .clear-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            align-self: flex-end;
+        }
+
+        .add-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .clear-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+            color: white;
+            margin-left: 10px;
+        }
+
+        .clear-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .tag-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tag-filter {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .tag-filter:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .tag-filter.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-color: transparent;
+        }
+
+        .show-list {
+            padding: 30px;
+        }
+
+        .show-item {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid transparent;
+        }
+
+        .show-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-left-color: #667eea;
+        }
+
+        .show-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .show-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .show-tag {
+            padding: 4px 12px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .show-tag .weight {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-left: 8px;
+            font-size: 0.7rem;
+        }
+
+        .no-shows {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 40px;
+        }
+
+        .active-filters {
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .add-show-form {
+                flex-direction: column;
+            }
+            
+            .input-group {
+                min-width: auto;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎬 Show Catalog</h1>
+            <p>Organize and filter your favorite shows with weighted tags</p>
+        </div>
+
+        <div class="controls">
+            <div class="add-show-form">
+                <div class="input-group">
+                    <label for="showTitle">Show Title</label>
+                    <input type="text" id="showTitle" placeholder="Enter show title">
+                </div>
+                <div class="input-group">
+                    <label for="showTags">Tags (tag:weight, tag:weight)</label>
+                    <input type="text" id="showTags" placeholder="e.g., comedy:9, drama:7, netflix:5">
+                </div>
+                <button class="add-btn" onclick="addShow()">Add Show</button>
+                <button class="clear-btn" onclick="clearAllShows()">Clear All</button>
+            </div>
+
+            <div class="tag-filters" id="tagFilters"></div>
+            <div class="active-filters" id="activeFilters"></div>
+        </div>
+
+        <div class="show-list" id="showList"></div>
+    </div>
+
+    <script>
+        let shows = [];
+        let activeFilters = new Set();
+
+        // Load data from localStorage
+        function loadData() {
+            const saved = localStorage.getItem('showCatalog');
+            if (saved) {
+                shows = JSON.parse(saved);
+                renderShows();
+                renderTagFilters();
+            }
+        }
+
+        // Save data to localStorage
+        function saveData() {
+            localStorage.setItem('showCatalog', JSON.stringify(shows));
+        }
+
+        function addShow() {
+            const titleInput = document.getElementById('showTitle');
+            const tagsInput = document.getElementById('showTags');
+
+            const title = titleInput.value.trim();
+            const tagsText = tagsInput.value.trim();
+
+            if (!title) {
+                alert('Please enter a show title');
+                return;
+            }
+
+            // Parse tags with weights
+            const tags = {};
+            if (tagsText) {
+                const tagPairs = tagsText.split(',');
+                for (let pair of tagPairs) {
+                    const parts = pair.trim().split(':');
+                    const tagName = parts[0].trim().toLowerCase();
+                    const weight = parts[1] ? parseInt(parts[1].trim()) : 5;
+                    if (tagName) {
+                        tags[tagName] = Math.max(1, Math.min(10, weight)); // Clamp between 1-10
+                    }
+                }
+            }
+
+            shows.push({
+                id: Date.now(),
+                title: title,
+                tags: tags
+            });
+
+            titleInput.value = '';
+            tagsInput.value = '';
+            
+            saveData();
+            renderShows();
+            renderTagFilters();
+        }
+
+        function clearAllShows() {
+            if (confirm('Are you sure you want to clear all shows?')) {
+                shows = [];
+                activeFilters.clear();
+                saveData();
+                renderShows();
+                renderTagFilters();
+            }
+        }
+
+        function renderTagFilters() {
+            const container = document.getElementById('tagFilters');
+            const allTags = new Set();
+
+            // Collect all unique tags
+            shows.forEach(show => {
+                Object.keys(show.tags).forEach(tag => allTags.add(tag));
+            });
+
+            if (allTags.size === 0) {
+                container.innerHTML = '';
+                return;
+            }
+
+            container.innerHTML = Array.from(allTags).sort().map(tag => 
+                `<div class="tag-filter ${activeFilters.has(tag) ? 'active' : ''}" 
+                      onclick="toggleFilter('${tag}')">
+                    ${tag}
+                </div>`
+            ).join('');
+
+            renderActiveFilters();
+        }
+
+        function renderActiveFilters() {
+            const container = document.getElementById('activeFilters');
+            if (activeFilters.size > 0) {
+                container.textContent = `Active filters: ${Array.from(activeFilters).join(', ')}`;
+            } else {
+                container.textContent = '';
+            }
+        }
+
+        function toggleFilter(tag) {
+            if (activeFilters.has(tag)) {
+                activeFilters.delete(tag);
+            } else {
+                activeFilters.add(tag);
+            }
+            renderShows();
+            renderTagFilters();
+        }
+
+        function renderShows() {
+            const container = document.getElementById('showList');
+            
+            let filteredShows = shows;
+
+            // Filter shows that have at least one active tag
+            if (activeFilters.size > 0) {
+                filteredShows = shows.filter(show => 
+                    Array.from(activeFilters).some(tag => show.tags.hasOwnProperty(tag))
+                );
+
+                // Sort by average weight of active tags
+                filteredShows.sort((a, b) => {
+                    const getAverageWeight = (show) => {
+                        const relevantTags = Array.from(activeFilters).filter(tag => 
+                            show.tags.hasOwnProperty(tag)
+                        );
+                        if (relevantTags.length === 0) return 0;
+                        
+                        const totalWeight = relevantTags.reduce((sum, tag) => 
+                            sum + show.tags[tag], 0
+                        );
+                        return totalWeight / relevantTags.length;
+                    };
+
+                    return getAverageWeight(b) - getAverageWeight(a);
+                });
+            } else {
+                // No filters active, sort alphabetically
+                filteredShows.sort((a, b) => a.title.localeCompare(b.title));
+            }
+
+            if (filteredShows.length === 0) {
+                container.innerHTML = '<div class="no-shows">No shows found. Add some shows or adjust your filters.</div>';
+                return;
+            }
+
+            container.innerHTML = filteredShows.map(show => {
+                const tagsHtml = Object.entries(show.tags).map(([tag, weight]) => {
+                    const isActive = activeFilters.has(tag);
+                    return `<span class="show-tag ${isActive ? 'active' : ''}" style="${isActive ? 'opacity: 1' : 'opacity: 0.6'}">
+                        ${tag}<span class="weight">${weight}</span>
+                    </span>`;
+                }).join('');
+
+                return `
+                    <div class="show-item">
+                        <div class="show-title">${show.title}</div>
+                        <div class="show-tags">${tagsHtml}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Event listeners
+        document.getElementById('showTitle').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addShow();
+            }
+        });
+
+        document.getElementById('showTags').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addShow();
+            }
+        });
+
+        // Initialize
+        loadData();
+
+        // Add some sample data if none exists
+        if (shows.length === 0) {
+            shows = [
+                { id: 1, title: "Breaking Bad", tags: { drama: 10, crime: 9, netflix: 8 } },
+                { id: 2, title: "The Office", tags: { comedy: 9, workplace: 8, netflix: 7 } },
+                { id: 3, title: "Stranger Things", tags: { scifi: 8, horror: 6, netflix: 9 } },
+                { id: 4, title: "Game of Thrones", tags: { fantasy: 9, drama: 8, hbo: 10 } },
+                { id: 5, title: "Friends", tags: { comedy: 8, sitcom: 9, classic: 7 } }
+            ];
+            saveData();
+            renderShows();
+            renderTagFilters();
+        }
+    </script>
+</body>
+</html>
