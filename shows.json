@@ -1,0 +1,184 @@
+{
+  "shows": [
+    {
+      "id": 1,
+      "title": "Breaking Bad",
+      "tags": {
+        "drama": 10,
+        "crime": 9,
+        "thriller": 8,
+        "netflix": 8,
+        "completed": 10,
+        "character-development": 10
+      }
+    },
+    {
+      "id": 2,
+      "title": "The Office",
+      "tags": {
+        "comedy": 9,
+        "workplace": 8,
+        "netflix": 7,
+        "sitcom": 9,
+        "feel-good": 8,
+        "completed": 10
+      }
+    },
+    {
+      "id": 3,
+      "title": "Stranger Things",
+      "tags": {
+        "scifi": 8,
+        "horror": 6,
+        "netflix": 9,
+        "supernatural": 8,
+        "80s": 9,
+        "ongoing": 7
+      }
+    },
+    {
+      "id": 4,
+      "title": "Game of Thrones",
+      "tags": {
+        "fantasy": 9,
+        "drama": 8,
+        "hbo": 10,
+        "medieval": 9,
+        "completed": 6,
+        "character-development": 9
+      }
+    },
+    {
+      "id": 5,
+      "title": "Friends",
+      "tags": {
+        "comedy": 8,
+        "sitcom": 9,
+        "classic": 7,
+        "feel-good": 9,
+        "romance": 6,
+        "completed": 10
+      }
+    },
+    {
+      "id": 6,
+      "title": "The Crown",
+      "tags": {
+        "drama": 8,
+        "historical": 10,
+        "netflix": 7,
+        "biography": 9,
+        "british": 8,
+        "ongoing": 8
+      }
+    },
+    {
+      "id": 7,
+      "title": "Brooklyn Nine-Nine",
+      "tags": {
+        "comedy": 8,
+        "workplace": 7,
+        "feel-good": 8,
+        "police": 6,
+        "completed": 8,
+        "diverse": 9
+      }
+    },
+    {
+      "id": 8,
+      "title": "The Witcher",
+      "tags": {
+        "fantasy": 8,
+        "action": 7,
+        "netflix": 6,
+        "medieval": 7,
+        "ongoing": 6,
+        "video-game": 8
+      }
+    },
+    {
+      "id": 9,
+      "title": "Squid Game",
+      "tags": {
+        "thriller": 9,
+        "korean": 10,
+        "netflix": 8,
+        "psychological": 8,
+        "violence": 8,
+        "social-commentary": 9
+      }
+    },
+    {
+      "id": 10,
+      "title": "The Mandalorian",
+      "tags": {
+        "scifi": 8,
+        "star-wars": 9,
+        "disney": 7,
+        "action": 7,
+        "ongoing": 8,
+        "western": 6
+      }
+    },
+    {
+      "id": 11,
+      "title": "Chernobyl",
+      "tags": {
+        "drama": 10,
+        "historical": 10,
+        "hbo": 9,
+        "miniseries": 9,
+        "tragedy": 9,
+        "completed": 10
+      }
+    },
+    {
+      "id": 12,
+      "title": "Avatar: The Last Airbender",
+      "tags": {
+        "animation": 10,
+        "fantasy": 9,
+        "adventure": 9,
+        "coming-of-age": 9,
+        "family": 8,
+        "completed": 10
+      }
+    },
+    {
+      "id": 13,
+      "title": "The Good Place",
+      "tags": {
+        "comedy": 8,
+        "philosophy": 9,
+        "feel-good": 8,
+        "netflix": 7,
+        "completed": 9,
+        "character-development": 8
+      }
+    },
+    {
+      "id": 14,
+      "title": "Ozark",
+      "tags": {
+        "crime": 8,
+        "thriller": 8,
+        "netflix": 8,
+        "drama": 7,
+        "money-laundering": 9,
+        "completed": 8
+      }
+    },
+    {
+      "id": 15,
+      "title": "Ted Lasso",
+      "tags": {
+        "comedy": 8,
+        "sports": 7,
+        "feel-good": 10,
+        "apple-tv": 8,
+        "character-development": 9,
+        "completed": 8
+      }
+    }
+  ]
+}

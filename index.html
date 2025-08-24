@@ -144,6 +144,12 @@
             border-color: transparent;
         }
 
+        .tag-filter.negative {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+            color: white;
+            border-color: transparent;
+        }
+
         .show-list {
             padding: 30px;
         }
@@ -209,6 +215,216 @@
             color: #333;
         }
 
+        .tag-management-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 2% auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-body {
+            padding: 30px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .tag-search {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        .tag-search:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .tag-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .tag-category {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-title {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 8px;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .selectable-tag {
+            padding: 8px 15px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            user-select: none;
+        }
+
+        .selectable-tag:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .selectable-tag.selected {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-color: transparent;
+        }
+
+        .weight-slider {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .selected-tags-section {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .selected-tag-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .weight-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .weight-display {
+            background: #667eea;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .remove-tag-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .custom-tag-section {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-tag-input {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .custom-tag-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+        }
+
         @media (max-width: 768px) {
             .add-show-form {
                 flex-direction: column;
@@ -220,6 +436,15 @@
             
             .header h1 {
                 font-size: 2rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+
+            .tag-categories {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -238,11 +463,13 @@
                     <input type="text" id="showTitle" placeholder="Enter show title">
                 </div>
                 <div class="input-group">
-                    <label for="showTags">Tags (tag:weight, tag:weight)</label>
-                    <input type="text" id="showTags" placeholder="e.g., comedy:9, drama:7, netflix:5">
+                    <label for="showTags">Tags</label>
+                    <input type="text" id="showTags" placeholder="Click 'Manage Tags' to select tags" readonly>
+                    <button class="add-btn" type="button" onclick="openTagManager()" style="margin-top: 10px;">Manage Tags</button>
                 </div>
                 <button class="add-btn" onclick="addShow()">Add Show</button>
                 <button class="clear-btn" onclick="clearAllShows()">Clear All</button>
+                <button class="clear-btn" onclick="resetToDefault()">Reset to Default</button>
             </div>
 
             <div class="tag-filters" id="tagFilters"></div>
@@ -252,19 +479,249 @@
         <div class="show-list" id="showList"></div>
     </div>
 
+    <!-- Tag Management Modal -->
+    <div id="tagModal" class="tag-management-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🏷️ Manage Tags</h2>
+                <button class="close-btn" onclick="closeTagManager()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="tag-search" id="tagSearch" placeholder="Search tags..." oninput="filterTags()">
+                
+                <div class="custom-tag-section">
+                    <h3>Create Custom Tag</h3>
+                    <div class="custom-tag-input">
+                        <input type="text" id="customTagName" placeholder="Enter custom tag name">
+                        <input type="range" id="customTagWeight" min="1" max="10" value="5" class="weight-slider">
+                        <span class="weight-display" id="customWeightDisplay">5</span>
+                        <button class="add-custom-btn" onclick="addCustomTag()">Add</button>
+                    </div>
+                </div>
+
+                <div class="tag-categories" id="tagCategories"></div>
+
+                <div class="selected-tags-section">
+                    <h3>Selected Tags</h3>
+                    <div id="selectedTagsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         let shows = [];
         let activeFilters = new Set();
+        let negativeFilters = new Set();
+        let showData = [];
+        let selectedTags = {};
+        let allAvailableTags = {};
 
-        // Load data from localStorage
+        // Predefined tag categories
+        const tagCategories = {
+            "Genres": ["comedy", "drama", "scifi", "fantasy", "thriller", "horror", "action", "romance", "crime", "mystery"],
+            "Platforms": ["netflix", "hbo", "disney", "apple-tv", "amazon-prime", "hulu", "peacock", "paramount"],
+            "Mood/Tone": ["feel-good", "dark", "psychological", "uplifting", "intense", "lighthearted", "philosophical"],
+            "Status": ["completed", "ongoing", "cancelled", "miniseries", "limited-series"],
+            "Style": ["animation", "documentary", "reality", "sitcom", "anthology", "procedural"],
+            "Setting/Era": ["historical", "futuristic", "modern", "medieval", "80s", "90s", "period-piece"],
+            "Themes": ["family", "friendship", "coming-of-age", "workplace", "school", "politics", "religion", "social-commentary"],
+            "Quality": ["character-development", "plot-twist", "visual-effects", "soundtrack", "cinematography"],
+            "Content": ["violence", "mature", "family-friendly", "educational", "biographical"]
+        };
+
+        // Load show data from JSON
+        async function loadShowData() {
+            try {
+                const response = await fetch('shows.json');
+                const data = await response.json();
+                showData = data.shows;
+                extractAllTags();
+                loadData();
+            } catch (error) {
+                console.error('Error loading show data:', error);
+                // Fallback to empty data
+                showData = [];
+                loadData();
+            }
+        }
+
+        // Extract all unique tags from existing shows
+        function extractAllTags() {
+            allAvailableTags = {...tagCategories};
+            
+            showData.forEach(show => {
+                Object.keys(show.tags).forEach(tag => {
+                    // Find appropriate category or add to "Other"
+                    let categoryFound = false;
+                    for (let [category, tags] of Object.entries(allAvailableTags)) {
+                        if (tags.includes(tag)) {
+                            categoryFound = true;
+                            break;
+                        }
+                    }
+                    if (!categoryFound) {
+                        if (!allAvailableTags["Other"]) {
+                            allAvailableTags["Other"] = [];
+                        }
+                        if (!allAvailableTags["Other"].includes(tag)) {
+                            allAvailableTags["Other"].push(tag);
+                        }
+                    }
+                });
+            });
+        }
+
+        // Load data from localStorage or use default data
         function loadData() {
             const saved = localStorage.getItem('showCatalog');
             if (saved) {
                 shows = JSON.parse(saved);
-                renderShows();
-                renderTagFilters();
+            } else {
+                // Use default data from shows.json if no saved data exists
+                shows = showData.map(show => ({...show})); // Create a copy to avoid modifying original
+                saveData(); // Save the initial data
             }
+            renderShows();
+            renderTagFilters();
         }
+
+        // Tag Management Functions
+        function openTagManager() {
+            selectedTags = {};
+            updateSelectedTagsDisplay();
+            renderTagCategories();
+            document.getElementById('tagModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTagManager() {
+            document.getElementById('tagModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function renderTagCategories() {
+            const container = document.getElementById('tagCategories');
+            const searchTerm = document.getElementById('tagSearch').value.toLowerCase();
+            
+            container.innerHTML = Object.entries(allAvailableTags).map(([category, tags]) => {
+                const filteredTags = tags.filter(tag => 
+                    tag.toLowerCase().includes(searchTerm)
+                );
+                
+                if (filteredTags.length === 0) return '';
+                
+                return `
+                    <div class="tag-category">
+                        <div class="category-title">${category}</div>
+                        <div class="tag-list">
+                            ${filteredTags.map(tag => `
+                                <div class="selectable-tag ${selectedTags[tag] ? 'selected' : ''}" 
+                                     onclick="toggleTagSelection('${tag}')">
+                                    ${tag}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterTags() {
+            renderTagCategories();
+        }
+
+        function toggleTagSelection(tag) {
+            if (selectedTags[tag]) {
+                delete selectedTags[tag];
+            } else {
+                selectedTags[tag] = 5; // Default weight
+            }
+            renderTagCategories();
+            updateSelectedTagsDisplay();
+        }
+
+        function updateSelectedTagsDisplay() {
+            const container = document.getElementById('selectedTagsList');
+            const tagInput = document.getElementById('showTags');
+            
+            if (Object.keys(selectedTags).length === 0) {
+                container.innerHTML = '<p style="color: #666; font-style: italic;">No tags selected</p>';
+                tagInput.value = '';
+                return;
+            }
+            
+            container.innerHTML = Object.entries(selectedTags).map(([tag, weight]) => `
+                <div class="selected-tag-item">
+                    <span>${tag}</span>
+                    <div class="weight-control">
+                        <input type="range" min="1" max="10" value="${weight}" 
+                               onchange="updateTagWeight('${tag}', this.value)" class="weight-slider">
+                        <span class="weight-display">${weight}</span>
+                        <button class="remove-tag-btn" onclick="removeSelectedTag('${tag}')">&times;</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Update the tags input field
+            const tagString = Object.entries(selectedTags)
+                .map(([tag, weight]) => `${tag}:${weight}`)
+                .join(', ');
+            tagInput.value = tagString;
+        }
+
+        function updateTagWeight(tag, weight) {
+            selectedTags[tag] = parseInt(weight);
+            updateSelectedTagsDisplay();
+        }
+
+        function removeSelectedTag(tag) {
+            delete selectedTags[tag];
+            renderTagCategories();
+            updateSelectedTagsDisplay();
+        }
+
+        function addCustomTag() {
+            const nameInput = document.getElementById('customTagName');
+            const weightSlider = document.getElementById('customTagWeight');
+            
+            const tagName = nameInput.value.trim().toLowerCase().replace(/\s+/g, '-');
+            const weight = parseInt(weightSlider.value);
+            
+            if (!tagName) {
+                alert('Please enter a tag name');
+                return;
+            }
+            
+            // Add to selected tags
+            selectedTags[tagName] = weight;
+            
+            // Add to available tags in "Other" category
+            if (!allAvailableTags["Other"]) {
+                allAvailableTags["Other"] = [];
+            }
+            if (!allAvailableTags["Other"].includes(tagName)) {
+                allAvailableTags["Other"].push(tagName);
+            }
+            
+            // Clear input
+            nameInput.value = '';
+            weightSlider.value = 5;
+            document.getElementById('customWeightDisplay').textContent = '5';
+            
+            renderTagCategories();
+            updateSelectedTagsDisplay();
+        }
+
+        // Update custom weight display
+        document.addEventListener('DOMContentLoaded', () => {
+            const customWeightSlider = document.getElementById('customTagWeight');
+            if (customWeightSlider) {
+                customWeightSlider.oninput = function() {
+                    document.getElementById('customWeightDisplay').textContent = this.value;
+                };
+            }
+        });
 
         // Save data to localStorage
         function saveData() {
@@ -273,51 +730,56 @@
 
         function addShow() {
             const titleInput = document.getElementById('showTitle');
-            const tagsInput = document.getElementById('showTags');
-
             const title = titleInput.value.trim();
-            const tagsText = tagsInput.value.trim();
 
             if (!title) {
                 alert('Please enter a show title');
                 return;
             }
 
-            // Parse tags with weights
-            const tags = {};
-            if (tagsText) {
-                const tagPairs = tagsText.split(',');
-                for (let pair of tagPairs) {
-                    const parts = pair.trim().split(':');
-                    const tagName = parts[0].trim().toLowerCase();
-                    const weight = parts[1] ? parseInt(parts[1].trim()) : 5;
-                    if (tagName) {
-                        tags[tagName] = Math.max(1, Math.min(10, weight)); // Clamp between 1-10
-                    }
-                }
+            if (Object.keys(selectedTags).length === 0) {
+                alert('Please select at least one tag');
+                return;
             }
 
             shows.push({
                 id: Date.now(),
                 title: title,
-                tags: tags
+                tags: {...selectedTags}
             });
 
             titleInput.value = '';
-            tagsInput.value = '';
+            document.getElementById('showTags').value = '';
+            selectedTags = {};
             
             saveData();
             renderShows();
             renderTagFilters();
+            extractAllTags(); // Update available tags
         }
 
         function clearAllShows() {
             if (confirm('Are you sure you want to clear all shows?')) {
                 shows = [];
                 activeFilters.clear();
+                negativeFilters.clear();
                 saveData();
                 renderShows();
                 renderTagFilters();
+            }
+        }
+
+        function resetToDefault() {
+            if (confirm('Reset to default show data? This will overwrite all your custom shows.')) {
+                shows = showData.map(show => ({...show})); // Create a copy
+                activeFilters.clear();
+                negativeFilters.clear();
+                selectedTags = {};
+                document.getElementById('showTags').value = '';
+                saveData();
+                renderShows();
+                renderTagFilters();
+                extractAllTags();
             }
         }
 
@@ -335,29 +797,43 @@
                 return;
             }
 
-            container.innerHTML = Array.from(allTags).sort().map(tag => 
-                `<div class="tag-filter ${activeFilters.has(tag) ? 'active' : ''}" 
-                      onclick="toggleFilter('${tag}')">
-                    ${tag}
-                </div>`
-            ).join('');
+            container.innerHTML = Array.from(allTags).sort().map(tag => {
+                let className = 'tag-filter';
+                if (activeFilters.has(tag)) className += ' active';
+                if (negativeFilters.has(tag)) className += ' negative';
+                
+                return `<div class="${className}" onclick="toggleFilter('${tag}')">
+                    ${negativeFilters.has(tag) ? '🚫 ' : ''}${tag}
+                </div>`;
+            }).join('');
 
             renderActiveFilters();
         }
 
         function renderActiveFilters() {
             const container = document.getElementById('activeFilters');
+            const filters = [];
+            
             if (activeFilters.size > 0) {
-                container.textContent = `Active filters: ${Array.from(activeFilters).join(', ')}`;
-            } else {
-                container.textContent = '';
+                filters.push(`Include: ${Array.from(activeFilters).join(', ')}`);
             }
+            if (negativeFilters.size > 0) {
+                filters.push(`Exclude: ${Array.from(negativeFilters).join(', ')}`);
+            }
+            
+            container.textContent = filters.length > 0 ? `Active filters - ${filters.join(' | ')}` : '';
         }
 
         function toggleFilter(tag) {
-            if (activeFilters.has(tag)) {
+            if (negativeFilters.has(tag)) {
+                // Third click: remove completely
+                negativeFilters.delete(tag);
+            } else if (activeFilters.has(tag)) {
+                // Second click: make negative
                 activeFilters.delete(tag);
+                negativeFilters.add(tag);
             } else {
+                // First click: make positive
                 activeFilters.add(tag);
             }
             renderShows();
@@ -369,28 +845,48 @@
             
             let filteredShows = shows;
 
-            // Filter shows that have at least one active tag
-            if (activeFilters.size > 0) {
-                filteredShows = shows.filter(show => 
-                    Array.from(activeFilters).some(tag => show.tags.hasOwnProperty(tag))
-                );
-
-                // Sort by average weight of active tags
-                filteredShows.sort((a, b) => {
-                    const getAverageWeight = (show) => {
-                        const relevantTags = Array.from(activeFilters).filter(tag => 
-                            show.tags.hasOwnProperty(tag)
+            // Apply filters
+            if (activeFilters.size > 0 || negativeFilters.size > 0) {
+                filteredShows = shows.filter(show => {
+                    const showTags = Object.keys(show.tags);
+                    
+                    // Check negative filters first - exclude if show has any negative tags
+                    if (negativeFilters.size > 0) {
+                        const hasNegativeTag = Array.from(negativeFilters).some(tag => 
+                            showTags.includes(tag)
                         );
-                        if (relevantTags.length === 0) return 0;
-                        
-                        const totalWeight = relevantTags.reduce((sum, tag) => 
-                            sum + show.tags[tag], 0
+                        if (hasNegativeTag) return false;
+                    }
+                    
+                    // If there are positive filters, show must have at least one
+                    if (activeFilters.size > 0) {
+                        const hasPositiveTag = Array.from(activeFilters).some(tag => 
+                            showTags.includes(tag)
                         );
-                        return totalWeight / relevantTags.length;
-                    };
-
-                    return getAverageWeight(b) - getAverageWeight(a);
+                        if (!hasPositiveTag) return false;
+                    }
+                    
+                    return true;
                 });
+
+                // Sort by average weight of active tags (only positive filters affect sorting)
+                if (activeFilters.size > 0) {
+                    filteredShows.sort((a, b) => {
+                        const getAverageWeight = (show) => {
+                            const relevantTags = Array.from(activeFilters).filter(tag => 
+                                show.tags.hasOwnProperty(tag)
+                            );
+                            if (relevantTags.length === 0) return 0;
+                            
+                            const totalWeight = relevantTags.reduce((sum, tag) => 
+                                sum + show.tags[tag], 0
+                            );
+                            return totalWeight / relevantTags.length;
+                        };
+
+                        return getAverageWeight(b) - getAverageWeight(a);
+                    });
+                }
             } else {
                 // No filters active, sort alphabetically
                 filteredShows.sort((a, b) => a.title.localeCompare(b.title));
@@ -404,7 +900,18 @@
             container.innerHTML = filteredShows.map(show => {
                 const tagsHtml = Object.entries(show.tags).map(([tag, weight]) => {
                     const isActive = activeFilters.has(tag);
-                    return `<span class="show-tag ${isActive ? 'active' : ''}" style="${isActive ? 'opacity: 1' : 'opacity: 0.6'}">
+                    const isNegative = negativeFilters.has(tag);
+                    let style = '';
+                    
+                    if (isActive) {
+                        style = 'opacity: 1; border: 2px solid #4CAF50;';
+                    } else if (isNegative) {
+                        style = 'opacity: 0.3; text-decoration: line-through;';
+                    } else {
+                        style = 'opacity: 0.6;';
+                    }
+                    
+                    return `<span class="show-tag" style="${style}">
                         ${tag}<span class="weight">${weight}</span>
                     </span>`;
                 }).join('');
@@ -421,32 +928,23 @@
         // Event listeners
         document.getElementById('showTitle').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
-                addShow();
+                if (Object.keys(selectedTags).length === 0) {
+                    openTagManager();
+                } else {
+                    addShow();
+                }
             }
         });
 
-        document.getElementById('showTags').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                addShow();
+        // Close modal when clicking outside
+        document.getElementById('tagModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeTagManager();
             }
         });
 
         // Initialize
-        loadData();
-
-        // Add some sample data if none exists
-        if (shows.length === 0) {
-            shows = [
-                { id: 1, title: "Breaking Bad", tags: { drama: 10, crime: 9, netflix: 8 } },
-                { id: 2, title: "The Office", tags: { comedy: 9, workplace: 8, netflix: 7 } },
-                { id: 3, title: "Stranger Things", tags: { scifi: 8, horror: 6, netflix: 9 } },
-                { id: 4, title: "Game of Thrones", tags: { fantasy: 9, drama: 8, hbo: 10 } },
-                { id: 5, title: "Friends", tags: { comedy: 8, sitcom: 9, classic: 7 } }
-            ];
-            saveData();
-            renderShows();
-            renderTagFilters();
-        }
+        loadShowData();
     </script>
 </body>
 </html>
